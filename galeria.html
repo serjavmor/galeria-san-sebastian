@@ -1,0 +1,327 @@
+<!-- 
+    DECLARACIÓN DE USO DE IA (U2):
+    Este proyecto integra Inteligencia Artificial para la optimización de código, 
+    diseño de interfaz y generación de activos visuales.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Obras - San Sebastian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="custom-body">
+
+    <script>
+        if (localStorage.getItem('temaOscuro') === 'activado') { document.body.classList.add('dark-mode'); }
+    </script>
+
+    <nav class="navbar navbar-expand-lg fixed-top custom-header">
+        <div class="container">
+            <a class="navbar-brand custom-subtitle mb-0" href="index.html">Galería San Sebastian</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active-page" href="galeria.html">Galería de Obras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <button id="btnTema" class="theme-toggle-btn" onclick="alternarTema()">🌙 Oscuro</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 100px; min-height: 80vh;">
+        <div class="text-center mb-5">
+            <h2 class="custom-title">Colección Exclusiva</h2>
+            <p class="custom-text">Le invitamos a contemplar nuestra selección de piezas de arte.</p>
+        </div>
+        
+        <!-- Grilla de 4 columnas por fila (IL5) -->
+        <div class="row g-4">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra1')">
+                    <img src="img/obra_00001.png" class="card-img-top custom-card-img" alt="Ecos de la Tierra">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Ecos de la Tierra</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra2')">
+                    <img src="img/obra_00002.png" class="card-img-top custom-card-img" alt="Memory Fragments">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Memory Fragments</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra3')">
+                    <img src="img/obra_00003.png" class="card-img-top custom-card-img" alt="Naturaleza Muerta">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Naturaleza Muerta</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra4')">
+                    <img src="img/obra_00004.png" class="card-img-top custom-card-img" alt="Organic Rhythm">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Organic Rhythm</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra5')">
+                    <img src="img/obra_00005.png" class="card-img-top custom-card-img" alt="Coastal Shore">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Coastal Shore</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra6')">
+                    <img src="img/obra_00006.png" class="card-img-top custom-card-img" alt="The Dancer">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">The Dancer</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra7')">
+                    <img src="img/obra_00007.png" class="card-img-top custom-card-img" alt="Urban Pulse">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Urban Pulse</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra8')">
+                    <img src="img/obra_00008.png" class="card-img-top custom-card-img" alt="Silent Echo">
+                    <div class="card-body text-center p-3">
+                        <h3 class="h6 fw-bold mb-0">Silent Echo</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Detalles -->
+    <div class="modal fade" id="obraModalUnificado" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header border-0 pb-0 position-absolute top-0 end-0 z-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="row g-0 modal-body-container">
+                        <div class="col-md-6 modal-img-side">
+                            <img id="modalImagen" src="" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
+                        </div>
+                        <div class="col-md-6 modal-form-side">
+                            <div class="vista-modal" style="display: flex;">
+                                <h3 id="modalTitulo" class="custom-title mb-4" style="font-size: 1.8rem;"></h3>
+                                <ul class="list-unstyled mb-4 custom-text" style="font-size: 0.95rem;">
+                                    <li><strong>Artista:</strong> <span id="modalArtista"></span></li>
+                                    <li><strong>Estado:</strong> <span id="modalEstado"></span></li>
+                                </ul>
+                                <button type="button" class="btn custom-btn w-100 py-2" onclick="alert('Solicitud enviada')">Solicitar Cotización</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-title">Ponerse en Contacto</h5>
+                    <p class="mb-2">Miguel Claro 337, Providencia</p>
+                    <p class="mb-2">Santiago, Región Metropolitana</p>
+                    <p class="mb-2">Chile</p>
+                    <p class="mb-2">+56 9 1234 5678</p>
+                    <p class="mb-0">asesoria@sansebastianarte.cl</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Enlaces Rápidos</h5>
+                    <a href="index.html" class="footer-link">Inicio</a>
+                    <a href="galeria.html" class="footer-link">Galería de Obras</a>
+                    <a href="contacto.html" class="footer-link">Contacto</a>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <h5 class="footer-title">Idiomas</h5>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <button onclick="cambiarIdioma('es')" class="lang-btn">Español</button>
+                        <button onclick="cambiarIdioma('en')" class="lang-btn">English</button>
+                        <button onclick="cambiarIdioma('fr')" class="lang-btn">Français</button>
+                        <button onclick="cambiarIdioma('ko')" class="lang-btn">한국어</button>
+                    </div>
+                    <h5 class="footer-title">Síguenos</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2026 Sergio Javier Morales Prado. Evaluación Unidad 2.</p>
+            </div>
+        </div>
+    </footer>
+    <div id="chatWidget" class="chat-widget">
+        <div id="chatButton" class="chat-button" onclick="toggleChat()">
+            <span style="font-size: 24px; color: white;">💬</span>
+        </div>
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header"><span>Asistente Inteligente V2</span></div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="msg msg-bot">¡Hola! 👋 Soy tu asistente. ¿Qué te gustaría saber hoy?</div>
+                <div id="initialOptions" class="mt-2 d-flex flex-wrap gap-2">
+                    <button class="option-btn" onclick="quickQuestion('obras')">🖼️ Obras</button>
+                    <button class="option-btn" onclick="quickQuestion('artistas')">👩‍🎨 Artistas</button>
+                    <button class="option-btn" onclick="quickQuestion('donde')">📍 Ubicación</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" class="chat-input" placeholder="Pregunta algo..." onkeypress="handleChatKey(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ChatBot -->
+    <div id="chatWidget" class="chat-widget">
+        <div id="chatButton" class="chat-button" onclick="toggleChat()">
+            <span style="font-size: 24px; color: white;">💬</span>
+        </div>
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header"><span>Asistente Inteligente V2</span></div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="msg msg-bot">¡Hola! 👋 Soy tu asistente. ¿Qué te gustaría saber hoy?</div>
+                <div id="initialOptions" class="mt-2 d-flex flex-wrap gap-2">
+                    <button class="option-btn" onclick="quickQuestion('obras')">🖼️ Obras</button>
+                    <button class="option-btn" onclick="quickQuestion('artistas')">👩‍🎨 Artistas</button>
+                    <button class="option-btn" onclick="quickQuestion('donde')">📍 Ubicación</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" class="chat-input" placeholder="Pregunta algo..." onkeypress="handleChatKey(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const baseDatos = {
+            obras: [
+                { id: "obra1", titulo: "Ecos de la Tierra", artista: "Sofia Chen", tecnica: "Acrílico y papel", dim: "80x100 cm", estado: "Disponible", imagen: "img/obra_00001.png" },
+                { id: "obra2", titulo: "Memory Fragments", artista: "Anya Sharma", tecnica: "Collage digital", dim: "60x60 cm", estado: "Vendido", imagen: "img/obra_00002.png" },
+                { id: "obra3", titulo: "Naturaleza Muerta", artista: "Isabel Benitez", tecnica: "Óleo sobre lienzo", dim: "100x120 cm", estado: "Disponible", imagen: "img/obra_00003.png" },
+                { id: "obra4", titulo: "Organic Rhythm", artista: "Elena Rossi", tecnica: "Acuarela", dim: "40x50 cm", estado: "Disponible", imagen: "img/obra_00004.png" },
+                { id: "obra5", titulo: "Coastal Shore", artista: "Mateo Ramirez", tecnica: "Fotografía", dim: "70x50 cm", estado: "Disponible", imagen: "img/obra_00005.png" },
+                { id: "obra6", titulo: "The Dancer", artista: "Kenji Tanaka", imagen: "img/obra_00006.png", tecnica: "Carboncillo", dim: "50x70 cm", estado: "Disponible" },
+                { id: "obra7", titulo: "Urban Pulse", artista: "Lucia Garcia", imagen: "img/obra_00007.png", tecnica: "Mixta", dim: "90x90 cm", estado: "Vendido" },
+                { id: "obra8", titulo: "Silent Echo", artista: "David Smith", imagen: "img/obra_00008.png", tecnica: "Escultura", dim: "30x30x30 cm", estado: "Disponible" }
+            ],
+            artistas: ["Sofia Chen", "Anya Sharma", "Isabel Benitez", "Elena Rossi", "Mateo Ramirez", "Kenji Tanaka"]
+        };
+
+        function cargarDatosObra(id) {
+            const obra = baseDatos.obras.find(o => o.id === id);
+            document.getElementById('modalImagen').src = obra.imagen;
+            document.getElementById('modalTitulo').textContent = obra.titulo;
+            document.getElementById('modalArtista').textContent = obra.artista;
+            // Actualizamos para mostrar técnica, dimensiones y estado
+            document.getElementById('modalEstado').innerHTML = `
+                <br><strong>Técnica:</strong> ${obra.tecnica}
+                <br><strong>Dimensiones:</strong> ${obra.dim}
+                <br><strong>Estado:</strong> ${obra.estado}
+            `;
+        }
+
+        function toggleChat() {
+            const w = document.getElementById('chatWindow');
+            w.style.display = w.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function quickQuestion(t) {
+            let q = "";
+            if(t==='obras') q = "Ver obras";
+            if(t==='artistas') q = "Ver artistas";
+            if(t==='donde') q = "¿Dónde están?";
+            document.getElementById('userInput').value = q;
+            sendMessage();
+            document.getElementById('initialOptions').style.display = 'none';
+        }
+
+        function handleChatKey(e) { if(e.key === 'Enter') sendMessage(); }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const val = input.value.trim();
+            if(!val) return;
+            appendMessage(val, 'user');
+            input.value = '';
+            setTimeout(() => {
+                let r = "No estoy seguro, pero puedes preguntar por 'obras', 'artistas' o 'ubicación'.";
+                const low = val.toLowerCase();
+                if(/(obra|pintura|ver)/.test(low)) r = "Nuestras obras: " + baseDatos.obras.map(o=>o.titulo).join(", ") + ". <a href='galeria.html'>Ver galería</a>";
+                else if(/(artista|autor|quien)/.test(low)) r = "Artistas destacados: " + baseDatos.artistas.join(", ");
+                else if(/(sofia|chen)/.test(low)) r = "Sofia Chen es la autora de 'Ecos de la Tierra'. <a href='galeria.html?obra=obra1'>Detalles</a>";
+                else if(/(donde|ubicacion|direccion)/.test(low)) r = "Estamos en Miguel Claro 337, Providencia, Santiago.";
+                else if(/(hola|buen)/.test(low)) r = "¡Hola! ¿Cómo puedo ayudarte?";
+                appendMessage(r, 'bot', true);
+            }, 600);
+        }
+
+        function appendMessage(txt, side, html=false) {
+            const container = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = `msg msg-${side}`;
+            if(html) div.innerHTML = txt; else div.textContent = txt;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        const traducciones = {
+            'es': { i: 'Inicio', g: 'Galería de Obras', c: 'Contacto' },
+            'en': { i: 'Home', g: 'Gallery', c: 'Contact' },
+            'fr': { i: 'Accueil', g: 'Galerie', c: 'Contact' },
+            'ko': { i: '홈', g: '갤러리', c: '연락하다' }
+        };
+
+        function cambiarIdioma(lang) {
+            const t = traducciones[lang];
+            const nav = document.querySelectorAll('.nav-link');
+            nav[0].textContent = t.i; nav[1].textContent = t.g; nav[2].textContent = t.c;
+            alert('Idioma: ' + lang.toUpperCase());
+        }
+
+        function alternarTema() {
+            const b = document.body;
+            b.classList.toggle('dark-mode');
+            const btn = document.getElementById('btnTema');
+            if(b.classList.contains('dark-mode')) {
+                localStorage.setItem('temaOscuro', 'activado');
+                btn.innerHTML = '☀️ Claro';
+            } else {
+                localStorage.setItem('temaOscuro', 'desactivado');
+                btn.innerHTML = '🌙 Oscuro';
+            }
+        }
+    </script>
+</body>
+</html>

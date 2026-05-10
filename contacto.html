@@ -1,0 +1,152 @@
+<!-- 
+    DECLARACIÓN DE USO DE IA (U2):
+    Este proyecto integra Inteligencia Artificial para la optimización de código, 
+    diseño de interfaz y generación de activos visuales.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Galería San Sebastian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contacto-contenedor { background-color: #ffffff; border-radius: 22px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); padding: 40px; }
+        body.dark-mode .contacto-contenedor { background-color: #555555; border: 1px solid #666666; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+        .info-contacto i { color: #0071e3; margin-right: 10px; }
+        body.dark-mode .info-contacto i { color: #66b2ff; }
+    </style>
+</head>
+<body class="custom-body">
+
+    <script>
+        if (localStorage.getItem('temaOscuro') === 'activado') { document.body.classList.add('dark-mode'); }
+    </script>
+
+    <nav class="navbar navbar-expand-lg fixed-top custom-header">
+        <div class="container">
+            <a class="navbar-brand custom-subtitle mb-0" href="index.html">Galería San Sebastian</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería de Obras</a></li>
+                    <li class="nav-item"><a class="nav-link active-page" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <button id="btnTema" class="theme-toggle-btn" onclick="alternarTema()">🌙 Oscuro</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 100px; min-height: 70vh;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="custom-title">Contacto</h2>
+                    <p class="custom-text">Estamos aquí para resolver sus dudas.</p>
+                </div>
+
+                <div class="contacto-contenedor">
+                    <div class="row g-4">
+                        <div class="col-md-5">
+                            <h4 class="h5 fw-bold mb-4">Información</h4>
+                            <div class="info-contacto mb-3"><i class="bi bi-geo-alt"></i> Miguel Claro 337, Providencia</div>
+                            <div class="info-contacto mb-3"><i class="bi bi-telephone"></i> +56 2 2123 4567</div>
+                            <div class="info-contacto mb-3"><i class="bi bi-envelope"></i> contacto@ipss.cl</div>
+                        </div>
+                        <div class="col-md-7">
+                            <form id="formContactoPrincipal">
+                                <div class="mb-3"><input type="text" class="form-control custom-input" placeholder="Nombre completo" required></div>
+                                <div class="mb-3"><input type="email" class="form-control custom-input" placeholder="Correo electrónico" required></div>
+                                <div class="mb-3">
+                                    <select class="form-select custom-input" required>
+                                        <option value="" disabled selected>Tipo de Solicitud</option>
+                                        <option value="compra">Compra</option>
+                                        <option value="consulta">Consulta</option>
+                                        <option value="venta">Venta</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4"><textarea class="form-control custom-input" rows="3" placeholder="Mensaje" required></textarea></div>
+                                <button type="button" class="btn custom-btn w-100" onclick="alert('Mensaje enviado')">Enviar Mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="mapa-contenedor">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.351296317208!2d-70.62375172462319!3d-33.43825839634734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf5f5c9e46a7%3A0x633907c0d29486a7!2sMiguel%20Claro%20337%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1715367000000!5m2!1ses!2scl" width="100%" height="250" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-title">Ponerse en Contacto</h5>
+                    <p class="mb-2">Miguel Claro 337, Providencia</p>
+                    <p class="mb-2">Santiago, Región Metropolitana</p>
+                    <p class="mb-2">Chile</p>
+                    <p class="mb-2">+56 2 2123 4567</p>
+                    <p class="mb-0">contacto@ipss.cl</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Enlaces Rápidos</h5>
+                    <a href="index.html" class="footer-link">Inicio</a>
+                    <a href="galeria.html" class="footer-link">Galería de Obras</a>
+                    <a href="contacto.html" class="footer-link">Contacto</a>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <h5 class="footer-title">Idiomas</h5>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <button onclick="cambiarIdioma('es')" class="lang-btn">Español</button>
+                        <button onclick="cambiarIdioma('en')" class="lang-btn">English</button>
+                        <button onclick="cambiarIdioma('fr')" class="lang-btn">Français</button>
+                        <button onclick="cambiarIdioma('ko')" class="lang-btn">한국어</button>
+                    </div>
+                    <h5 class="footer-title">Síguenos</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2026 Sergio Javier Morales Prado. Evaluación Unidad 2.</p>
+            </div>
+        </div>
+    </footer>
+    <div id="chatWidget" class="chat-widget">
+        <div id="chatButton" class="chat-button" onclick="toggleChat()">
+            <span style="font-size: 24px; color: white;">💬</span>
+        </div>
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header"><span>Asistente Inteligente V2</span></div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="msg msg-bot">¡Hola! 👋 Soy tu asistente. ¿Qué te gustaría saber hoy?</div>
+                <div id="initialOptions" class="mt-2 d-flex flex-wrap gap-2">
+                    <button class="option-btn" onclick="quickQuestion('obras')">🖼️ Obras</button>
+                    <button class="option-btn" onclick="quickQuestion('artistas')">👩‍🎨 Artistas</button>
+                    <button class="option-btn" onclick="quickQuestion('donde')">📍 Ubicación</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" class="chat-input" placeholder="Pregunta algo..." onkeypress="handleChatKey(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

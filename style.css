@@ -1,0 +1,470 @@
+/* =========================================
+   0. DECLARACIÓN DE USO DE IA (U2)
+   =========================================
+   Este proyecto utiliza Inteligencia Artificial para:
+   - Optimización de la hoja de estilos CSS.
+   - Generación de activos visuales originales.
+   - Refactorización y validación de sintaxis HTML5/CSS3.
+   ========================================= */
+
+/* =========================================
+   1. VARIABLES DE COLOR (IE5 - 5 Colores)
+   ========================================= */
+:root {
+    --primary-color: #0071e3;    /* Azul Corporativo */
+    --secondary-color: #f5f5f7;  /* Gris Claro Fondo */
+    --accent-color: #06c2ac;     /* Accento Esmeralda */
+    --text-dark: #1d1d1f;        /* Texto Principal */
+    --text-muted: #86868b;       /* Texto Secundario */
+    --bg-white: #ffffff;         /* Blanco Puro */
+    --transition-speed: 0.4s;    /* IE6: Duración entre 0.3 y 0.5s */
+}
+
+/* =========================================
+   2. RESET Y ESTILOS BASE
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    line-height: 1.6; /* IE4: Mínimo 1.5 */
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* =========================================
+   3. JERARQUÍA TIPOGRÁFICA (IE3)
+   ========================================= */
+.custom-title { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.015em; color: var(--text-dark); line-height: 1.1; }
+.custom-subtitle { font-size: 1.5rem; font-weight: 600; color: var(--text-muted); line-height: 1.4; }
+.custom-text { font-size: 1.15rem; font-weight: 400; color: var(--text-dark); line-height: 1.6; margin-bottom: 1.5rem; } /* IE4: Espaciado párrafos */
+
+@media (max-width: 768px) {
+    .custom-title { font-size: 2.5rem; }
+    .custom-subtitle { font-size: 1.2rem; }
+}
+
+/* =========================================
+   4. NAVEGACIÓN Y HEADER (IE2)
+   ========================================= */
+.custom-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-link:hover { color: var(--primary-color) !important; }
+
+body.dark-mode .nav-link { color: #ffffff !important; }
+body.dark-mode .nav-link:hover { color: var(--primary-color) !important; }
+body.dark-mode .navbar-brand { color: #ffffff !important; }
+
+.active-page {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    position: relative;
+}
+
+.active-page::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* =========================================
+   5. BOTONES PERSONALIZADOS
+   ========================================= */
+.custom-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 24px;
+    font-weight: 600;
+    border: none;
+    transition: all var(--transition-speed) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.custom-btn:hover {
+    background-color: #0077ed;
+    transform: scale(1.02);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3);
+}
+
+/* =========================================
+   6. ELEMENTOS DE FORMULARIO
+   ========================================= */
+.custom-input {
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid #d2d2d7;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all var(--transition-speed) ease;
+}
+
+.custom-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+    outline: none;
+}
+
+/* =========================================
+   7. FOOTER PROFESIONAL (V2)
+   ========================================= */
+.custom-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 0 30px;
+    font-size: 0.9rem;
+    border-top: none;
+}
+
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.footer-link {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   8. CHAT AUTOMÁTICO (V2)
+   ========================================= */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.chat-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.chat-button:hover { transform: scale(1.1); }
+
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 320px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.chat-header {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-messages {
+    height: 300px;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
+}
+
+.msg {
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 85%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.msg-bot {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.msg-user {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 8px;
+}
+
+.chat-options {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+}
+
+.option-btn {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body.dark-mode .chat-window {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-mode .chat-messages { background-color: #2a2a2a; }
+body.dark-mode .msg-bot { background-color: #444; color: #eee; }
+body.dark-mode .chat-input-area, body.dark-mode .chat-options { border-color: #444; background-color: #333; }
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 2px 5px;
+    transition: color 0.3s ease;
+}
+
+.lang-btn:hover { color: var(--primary-color); }
+
+.chat-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.chat-send {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* =========================================
+   10. ANIMACIONES DE INICIO Y TEXTO
+   ========================================= */
+.esperando-animacion { opacity: 0; filter: blur(4px); transform: translateY(-30px); }
+.revelar-desde-arriba { animation: fadeInTopDown 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+
+@keyframes fadeInTopDown {
+    0% { opacity: 0; filter: blur(4px); transform: translateY(-30px); }
+    100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.fade-in-blur {
+    opacity: 0; filter: blur(4px); transform: translateY(20px);
+    animation: fadeBlurAnimation 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes fadeBlurAnimation {
+    100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.letra-magica { opacity: 0; filter: blur(5px); transition: opacity 0.8s ease-out, filter 0.8s ease-out; }
+.letra-magica.visible { opacity: 1; filter: blur(0); }
+
+/* =========================================
+   11. FLECHAS SOFISTICADAS DEL CARRUSEL
+   ========================================= */
+.carousel-control-prev, .carousel-control-next {
+    width: 10%; opacity: 0; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#galeriaCarousel:hover .carousel-control-prev,
+#galeriaCarousel:hover .carousel-control-next { opacity: 1; }
+
+.arrow-wrapper {
+    width: 54px; height: 54px; border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.arrow-wrapper:hover { background-color: rgba(255, 255, 255, 0.5); transform: scale(1.1); }
+.carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(1) grayscale(100%) brightness(0.5); width: 20px; height: 20px; }
+
+/* =========================================
+   12. TARJETAS, MODALS Y TRANSICIONES
+   ========================================= */
+.custom-card-img { height: 180px; object-fit: cover; border-bottom: 1px solid #f5f5f7; }
+.custom-card { max-width: 260px; margin: 0 auto; transition: transform 0.6s ease, box-shadow 0.6s ease !important; }
+
+.modal-content-custom { border-radius: 22px !important; border: none !important; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+.modal-body-container { min-height: 500px; display: flex; align-items: stretch; position: relative; }
+.modal-img-side { background-color: #fbfbfd; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal-form-side { padding: 40px !important; position: relative; }
+.vista-modal { transition: opacity 0.3s ease-in-out; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+
+.btn-volver { background: none; border: none; color: #0071e3; font-size: 0.85rem; padding: 0; margin-bottom: 15px; text-decoration: underline; text-align: left; }
+.btn-volver:hover { color: #005bb5; }
+
+@keyframes baileSuave {
+    0%, 100% { transform: scale(1.02) rotate(0deg); }
+    25% { transform: scale(1.02) rotate(1deg); }
+    75% { transform: scale(1.02) rotate(-1deg); }
+}
+.resaltar-tarjeta { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important; z-index: 10; position: relative; animation: baileSuave 1s ease-in-out 2; }
+
+/* =========================================
+   13. MODO OSCURO GLOBAL (Gris Elegante)
+   ========================================= */
+body.dark-mode { background-color: #424242; color: #f5f5f7; }
+body.dark-mode .custom-header { background-color: rgba(66, 66, 66, 0.95); border-bottom: 1px solid #5c5c5c; }
+body.dark-mode .custom-title, body.dark-mode .custom-subtitle, body.dark-mode .h6, body.dark-mode .text-dark, body.dark-mode strong { color: #ffffff !important; }
+body.dark-mode .custom-text, body.dark-mode p.text-muted { color: #cccccc !important; }
+
+body.dark-mode .custom-card, body.dark-mode .modal-content-custom, body.dark-mode .contacto-contenedor {
+    background-color: #555555; border: 1px solid #666666 !important;
+}
+body.dark-mode .contacto-contenedor { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); }
+body.dark-mode .custom-card-img { border-bottom: 1px solid #666666; }
+body.dark-mode .modal-img-side { background-color: #4a4a4a; }
+
+body.dark-mode .custom-input { background-color: #666666; color: #ffffff; border: 1px solid #7a7a7a; }
+body.dark-mode .custom-input::placeholder { color: #bbbbbb; }
+body.dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); background-color: transparent !important; }
+body.dark-mode .resaltar-tarjeta { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important; }
+body.dark-mode .info-contacto i { color: #66b2ff; }
+body.dark-mode .mapa-contenedor iframe { filter: grayscale(30%) brightness(85%); }
+
+/* =========================================
+   UI Y ESTÉTICA (V2)
+   ========================================= */
+.theme-toggle-btn {
+    width: 100px; /* Tamaño fijo */
+    height: 35px;
+    background: transparent; 
+    border: 1px solid #0071e3; 
+    border-radius: 20px;
+    font-size: 0.85rem; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    color: #0071e3; 
+    font-weight: bold; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Forzar iconos a blanco y negro */
+.bi, .social-icon i {
+    filter: grayscale(100%) brightness(0);
+}
+
+body.dark-mode .bi, body.dark-mode .social-icon i {
+    filter: grayscale(100%) brightness(100%);
+}
