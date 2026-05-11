@@ -21,10 +21,10 @@
     <nav class="navbar navbar-expand-lg fixed-top custom-header">
         <div class="container">
             <a class="navbar-brand custom-subtitle mb-0" href="index.html">Galería San Sebastian</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" id="navToggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav gap-4 align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link active-page" href="galeria.html">Galería de Obras</a></li>
@@ -43,7 +43,6 @@
             <p class="custom-text">Le invitamos a contemplar nuestra selección de piezas de arte.</p>
         </div>
         
-        <!-- Grilla de 4 columnas por fila (IL5) -->
         <div class="row g-4">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="card custom-card h-100" data-bs-toggle="modal" data-bs-target="#obraModalUnificado" onclick="cargarDatosObra('obra1')">
@@ -112,7 +111,6 @@
         </div>
     </main>
 
-    <!-- Modal de Detalles -->
     <div class="modal fade" id="obraModalUnificado" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content modal-content-custom">
@@ -125,13 +123,13 @@
                             <img id="modalImagen" src="" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
                         </div>
                         <div class="col-md-6 modal-form-side">
-                            <div class="vista-modal" style="display: flex;">
+                            <div id="vista-detalles" class="vista-modal" style="display: flex;">
                                 <h3 id="modalTitulo" class="custom-title mb-4" style="font-size: 1.8rem;"></h3>
                                 <ul class="list-unstyled mb-4 custom-text" style="font-size: 0.95rem;">
                                     <li><strong>Artista:</strong> <span id="modalArtista"></span></li>
-                                    <li><strong>Estado:</strong> <span id="modalEstado"></span></li>
+                                    <li id="modalEstado"></li>
                                 </ul>
-                                <button type="button" class="btn custom-btn w-100 py-2" data-bs-toggle="modal" data-bs-target="#obraModalUnificado">Solicitar Cotización</button>
+                                <button type="button" class="btn custom-btn w-100 py-2" onclick="alert('Solicitud enviada')">Solicitar Cotización</button>
                             </div>
                         </div>
                     </div>
@@ -148,8 +146,8 @@
                     <p class="mb-2">Miguel Claro 337, Providencia</p>
                     <p class="mb-2">Santiago, Región Metropolitana</p>
                     <p class="mb-2">Chile</p>
-                    <p class="mb-2">+56 9 1234 5678</p>
-                    <p class="mb-0">asesoria@sansebastianarte.cl</p>
+                    <p class="mb-2">+56 2 2123 4567</p>
+                    <p class="mb-0">contacto@ipss.cl</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="footer-title">Enlaces Rápidos</h5>
@@ -179,28 +177,7 @@
             </div>
         </div>
     </footer>
-    <div id="chatWidget" class="chat-widget">
-        <div id="chatButton" class="chat-button" onclick="toggleChat()">
-            <span style="font-size: 24px; color: white;">💬</span>
-        </div>
-        <div id="chatWindow" class="chat-window">
-            <div class="chat-header"><span>Asistente Inteligente V2</span></div>
-            <div id="chatMessages" class="chat-messages">
-                <div class="msg msg-bot">¡Hola! 👋 Soy tu asistente. ¿Qué te gustaría saber hoy?</div>
-                <div id="initialOptions" class="mt-2 d-flex flex-wrap gap-2">
-                    <button class="option-btn" onclick="quickQuestion('obras')">🖼️ Obras</button>
-                    <button class="option-btn" onclick="quickQuestion('artistas')">👩‍🎨 Artistas</button>
-                    <button class="option-btn" onclick="quickQuestion('donde')">📍 Ubicación</button>
-                </div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="userInput" class="chat-input" placeholder="Pregunta algo..." onkeypress="handleChatKey(event)">
-                <button class="chat-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
-            </div>
-        </div>
-    </div>
 
-    <!-- ChatBot -->
     <div id="chatWidget" class="chat-widget">
         <div id="chatButton" class="chat-button" onclick="toggleChat()">
             <span style="font-size: 24px; color: white;">💬</span>
@@ -223,6 +200,7 @@
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const baseDatos = {
             obras: [
@@ -243,7 +221,6 @@
             document.getElementById('modalImagen').src = obra.imagen;
             document.getElementById('modalTitulo').textContent = obra.titulo;
             document.getElementById('modalArtista').textContent = obra.artista;
-            // Actualizamos para mostrar técnica, dimensiones y estado
             document.getElementById('modalEstado').innerHTML = `
                 <br><strong>Técnica:</strong> ${obra.tecnica}
                 <br><strong>Dimensiones:</strong> ${obra.dim}
@@ -321,7 +298,11 @@
                 btn.innerHTML = '🌙 Oscuro';
             }
         }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById('btnTema');
+            if(document.body.classList.contains('dark-mode')) btn.innerHTML = '☀️ Claro';
+        });
     </script>
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>

@@ -27,10 +27,10 @@
     <nav class="navbar navbar-expand-lg fixed-top custom-header">
         <div class="container">
             <a class="navbar-brand custom-subtitle mb-0" href="index.html">Galería San Sebastian</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" id="navToggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav gap-4 align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="galeria.html">Galería de Obras</a></li>
@@ -127,6 +127,7 @@
             </div>
         </div>
     </footer>
+
     <div id="chatWidget" class="chat-widget">
         <div id="chatButton" class="chat-button" onclick="toggleChat()">
             <span style="font-size: 24px; color: white;">💬</span>
@@ -148,6 +149,89 @@
         </div>
     </div>
 
-</body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const baseDatos = {
+            obras: ["Ecos de la Tierra", "Memory Fragments"],
+            artistas: ["Sofia Chen", "Anya Sharma"]
+        };
+
+        function toggleChat() {
+            const w = document.getElementById('chatWindow');
+            w.style.display = w.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function quickQuestion(t) {
+            let q = "";
+            if(t==='obras') q = "Ver obras";
+            if(t==='artistas') q = "Ver artistas";
+            if(t==='donde') q = "¿Dónde están?";
+            document.getElementById('userInput').value = q;
+            sendMessage();
+            document.getElementById('initialOptions').style.display = 'none';
+        }
+
+        function handleChatKey(e) { if(e.key === 'Enter') sendMessage(); }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const val = input.value.trim();
+            if(!val) return;
+            appendMessage(val, 'user');
+            input.value = '';
+            setTimeout(() => {
+                let r = "No estoy seguro, pero puedes preguntar por 'obras', 'artistas' o 'ubicación'.";
+                const low = val.toLowerCase();
+                if(/(obra|pintura|ver)/.test(low)) r = "Nuestras obras: " + baseDatos.obras.join(", ") + ". <a href='galeria.html'>Ver galería</a>";
+                else if(/(artista|autor|quien)/.test(low)) r = "Artistas destacados: " + baseDatos.artistas.join(", ");
+                else if(/(sofia|chen)/.test(low)) r = "Sofia Chen es la autora de 'Ecos de la Tierra'. <a href='galeria.html?obra=obra1'>Detalles</a>";
+                else if(/(donde|ubicacion|direccion)/.test(low)) r = "Estamos en Miguel Claro 337, Providencia, Santiago.";
+                else if(/(hola|buen)/.test(low)) r = "¡Hola! ¿Cómo puedo ayudarte?";
+                appendMessage(r, 'bot', true);
+            }, 600);
+        }
+
+        function appendMessage(txt, side, html=false) {
+            const container = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = `msg msg-${side}`;
+            if(html) div.innerHTML = txt; else div.textContent = txt;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        const traducciones = {
+            'es': { i: 'Inicio', g: 'Galería de Obras', c: 'Contacto' },
+            'en': { i: 'Home', g: 'Gallery', c: 'Contact' },
+            'fr': { i: 'Accueil', g: 'Galerie', c: 'Contact' },
+            'ko': { i: '홈', g: '갤러리', c: '연락하다' }
+        };
+
+        function cambiarIdioma(lang) {
+            const t = traducciones[lang];
+            const nav = document.querySelectorAll('.nav-link');
+            nav[0].textContent = t.i; nav[1].textContent = t.g; nav[2].textContent = t.c;
+            alert('Idioma: ' + lang.toUpperCase());
+        }
+
+        function alternarTema() {
+            const b = document.body;
+            b.classList.toggle('dark-mode');
+            const btn = document.getElementById('btnTema');
+            if(b.classList.contains('dark-mode')) {
+                localStorage.setItem('temaOscuro', 'activado');
+                btn.innerHTML = '☀️ Claro';
+            } else {
+                localStorage.setItem('temaOscuro', 'desactivado');
+                btn.innerHTML = '🌙 Oscuro';
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById('btnTema');
+            if(document.body.classList.contains('dark-mode')) btn.innerHTML = '☀️ Claro';
+        });
+    </script>
+</body>
 </html>
